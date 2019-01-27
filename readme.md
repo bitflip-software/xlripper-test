@@ -7,7 +7,7 @@ This repository serves as a submodule to `xlripper` which is a minimalistic xlsx
 
 ## Structure
 
-Each xlsx test file must consist of these parts, at the root of the repository:
+Each xlsx test file should be represented by a cluster of files at the root of the repository, for example:
 
 ```
 somefile.xlsx
@@ -16,9 +16,9 @@ somefile.sheet0.csv
 somefile.shhet1.csv
 ```
 
-The test will automatically parse the xlsx file. It will use the information in somefile.meta.json to discover the sheet names. It will compare its extracted data and sheet names against the data provided in somefile.sheet0.csv (and additional sheets if they exist in the xlsx).
+The test will automatically parse the xlsx file. It will use the information in `somefile.meta.json` to discover the sheet names. It will compare its extracted data and sheet names against the data provided in `somefile.sheet0.csv` (and additional sheets if they exist in the xlsx).
 
-In the event that the test xlsx file is expected to fail parsing (for example, if the file is corrupt) then the json will indicate this and sheet.csv files are not necessary.
+In the event that the test xlsx file is expected to fail parsing (for example, if the file is corrupt) then the JSON will indicate this and sheet.csv files are not necessary.
 
 ## JSON Meta Structure
 
@@ -26,17 +26,18 @@ Each test xlsx file should include a json file with metadata. If the xlsx file i
 
 ```
 {
-	"name": "myfile.xlsx",
-	"isFailureExpected": false,
-	"sheets: [
-		"My Sheet 1",
-		"Another Sheet Here"
-	]
+    "name": "myfile.xlsx",
+    "description": "file produced by Libre Office",
+    "isFailureExpected": false,
+    "sheets": [
+        "My Sheet 1",
+        "Another Sheet Here"
+    ]
 }
-
 ```
 
 * `name` is the xlsx filename, string
+* `description` should tell us where the file came from or what is special about it, string.
 * `isFailureExpected` should be true if the xlsx file is corrupted or unparseable, boolean.
 * `sheets` A list of the sheets found in the xlsx file, array of strings in the correct order.
 
