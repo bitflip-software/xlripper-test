@@ -1,8 +1,8 @@
 {
-    "name": "bi.xlsx",
-    "description": "from a proprietary business intelligence system"
-    "is_failure_expected": false,
-    "sheets": [
-        "Sheet1"
-    ]
+  "name": "bi.xlsx",
+  "description": "from a proprietary business intelligence system",
+  "is_failure_expected": false,
+  "sheets": [
+    "Sheet1"
+  ]
 }

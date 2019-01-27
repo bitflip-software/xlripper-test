@@ -22,17 +22,16 @@ In the event that the test xlsx file is expected to fail parsing (for example, i
 
 ## JSON Meta Structure
 
-Each test xlsx file should include a json file with metadata. If the xlsx file is named `myfile.xlsx` then the metadata file should be named `myfile.json.xlsx`. The json file should look like this:
+Each test xlsx file should include a json file with metadata. If the xlsx file is named `myfile.xlsx` then the metadata file should be named `myfile.meta.json`. The json file should look like this:
 
 ```
 {
-    "name": "myfile.xlsx",
-    "description": "file produced by Libre Office",
-    "is_failure_expected": false,
-    "sheets": [
-        "My Sheet 1",
-        "Another Sheet Here"
-    ]
+  "name": "myfile.xlsx",
+  "description": "file created with Libre Office",
+  "is_failure_expected": false,
+  "sheets": [
+    "Sheet1"
+  ]
 }
 ```
 
