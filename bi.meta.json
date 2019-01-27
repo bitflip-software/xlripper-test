@@ -1,7 +1,7 @@
 {
     "name": "bi.xlsx",
     "description": "from a proprietary business intelligence system"
-    "isFailureExpected": false,
+    "is_failure_expected": false,
     "sheets": [
         "Sheet1"
     ]

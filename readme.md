@@ -28,7 +28,7 @@ Each test xlsx file should include a json file with metadata. If the xlsx file i
 {
     "name": "myfile.xlsx",
     "description": "file produced by Libre Office",
-    "isFailureExpected": false,
+    "is_failure_expected": false,
     "sheets": [
         "My Sheet 1",
         "Another Sheet Here"
@@ -38,7 +38,7 @@ Each test xlsx file should include a json file with metadata. If the xlsx file i
 
 * `name` is the xlsx filename, string
 * `description` should tell us where the file came from or what is special about it, string.
-* `isFailureExpected` should be true if the xlsx file is corrupted or unparseable, boolean.
+* `is_failure_expected` should be true if the xlsx file is corrupted or unparseable, boolean.
 * `sheets` A list of the sheets found in the xlsx file, array of strings in the correct order.
 
 In the example above, we are declaring that the xlsx file has two sheets. Both of these sheets should be exported as separate csv documents using Microsoft Excel.
