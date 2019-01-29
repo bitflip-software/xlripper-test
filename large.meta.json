@@ -1,6 +1,7 @@
 {
   "name": "large.xlsx",
   "description": "from a proprietary business intelligence system",
+  "epsilon": 0.005,
   "is_failure_expected": false,
   "sheets": [
     "Sheet1"

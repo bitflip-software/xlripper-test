@@ -28,6 +28,7 @@ Each test xlsx file should include a json file with metadata. If the xlsx file i
 {
   "name": "myfile.xlsx",
   "description": "file created with Libre Office",
+  "epsilon": 0.00001,
   "is_failure_expected": false,
   "sheets": [
     "Sheet1"
@@ -37,6 +38,7 @@ Each test xlsx file should include a json file with metadata. If the xlsx file i
 
 * `name` is the xlsx filename, string
 * `description` should tell us where the file came from or what is special about it, string.
+* `epsilon` (optional) tells us how close floats must be to be considered equal, float64.
 * `is_failure_expected` should be true if the xlsx file is corrupted or unparseable, boolean.
 * `sheets` A list of the sheets found in the xlsx file, array of strings in the correct order.
 
