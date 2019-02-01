@@ -7,7 +7,7 @@ This repository serves as a submodule to `xlripper` which is a minimalistic xlsx
 
 ## Structure
 
-Each xlsx test file must consist of these parts, at the root of the repository:
+Each xlsx test file should be represented by a cluster of files at the root of the repository, for example:
 
 ```
 somefile.xlsx
@@ -16,28 +16,30 @@ somefile.sheet0.csv
 somefile.shhet1.csv
 ```
 
-The test will automatically parse the xlsx file. It will use the information in somefile.meta.json to discover the sheet names. It will compare its extracted data and sheet names against the data provided in somefile.sheet0.csv (and additional sheets if they exist in the xlsx).
+The test will automatically parse the xlsx file. It will use the information in `somefile.meta.json` to discover the sheet names. It will compare its extracted data and sheet names against the data provided in `somefile.sheet0.csv` (and additional sheets if they exist in the xlsx).
 
-In the event that the test xlsx file is expected to fail parsing (for example, if the file is corrupt) then the json will indicate this and sheet.csv files are not necessary.
+In the event that the test xlsx file is expected to fail parsing (for example, if the file is corrupt) then the JSON will indicate this and sheet.csv files are not necessary.
 
 ## JSON Meta Structure
 
-Each test xlsx file should include a json file with metadata. If the xlsx file is named `myfile.xlsx` then the metadata file should be named `myfile.json.xlsx`. The json file should look like this:
+Each test xlsx file should include a json file with metadata. If the xlsx file is named `myfile.xlsx` then the metadata file should be named `myfile.meta.json`. The json file should look like this:
 
 ```
 {
-	"name": "myfile.xlsx",
-	"isFailureExpected": false,
-	"sheets: [
-		"My Sheet 1",
-		"Another Sheet Here"
-	]
+  "name": "myfile.xlsx",
+  "description": "file created with Libre Office",
+  "epsilon": 0.00001,
+  "is_failure_expected": false,
+  "sheets": [
+    "Sheet1"
+  ]
 }
-
 ```
 
 * `name` is the xlsx filename, string
-* `isFailureExpected` should be true if the xlsx file is corrupted or unparseable, boolean.
+* `description` should tell us where the file came from or what is special about it, string.
+* `epsilon` (optional) tells us how close floats must be to be considered equal, float64.
+* `is_failure_expected` should be true if the xlsx file is corrupted or unparseable, boolean.
 * `sheets` A list of the sheets found in the xlsx file, array of strings in the correct order.
 
 In the example above, we are declaring that the xlsx file has two sheets. Both of these sheets should be exported as separate csv documents using Microsoft Excel.
